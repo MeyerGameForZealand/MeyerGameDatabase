@@ -1,5 +1,6 @@
 ﻿use MeyerDatabase
 
+-- Table containing data about the Players.
 create table Player
 (
 	PlayerId int identity(1,1) primary key not null,
@@ -8,6 +9,7 @@ create table Player
 	Losses int not null,
 )
 
+-- Table containing data about the game itself.
 create table Game
 (
 	GameId int identity(1,1) primary key not null,
@@ -19,6 +21,7 @@ create table Game
 	foreign key(Players) references Player(PlayerId)
 )
 
+-- Tabel containing data about the throws result.
 create table Die
 (
 	ThrowId int identity(1,1) primary key not null,
@@ -28,6 +31,7 @@ create table Die
 	RightCheatDie int not null
 )
 
+-- Table containing data sent from our raspberry pi.
 create table PiData
 (
 	PiDataId int not null,
@@ -41,12 +45,3 @@ create table PiData
 	PlayerAmount int not null,
 	Winner int not null
 )
-
-
-drop table Player;
-drop table Game;
-drop table Die;
-drop table PiData;
-
-INSERT PiData
-	values (1,0,0,0,0,0,0,0,0,0)
